@@ -1,0 +1,58 @@
+<div class="todos">
+
+        <form>
+            <mat-form-field appearance="fill">
+                <mat-label>Fill form field</mat-label>
+                <input matInput placeholder="Placeholder"
+                    type="text"
+                    name="inputTodo"
+                    class="todo-input"
+                    [(ngModel)]="inputTodo"
+                >
+
+    
+                
+              </mat-form-field>
+              <div class="example-button-container">
+                <button ((click))="addTodo" mat-fab color="primary" aria-label="Example icon button with a delete icon">
+                    
+                    <mat-icon>add</mat-icon>
+                </button>
+              </div>
+        </form>
+          
+    
+        <style>
+          .position {
+              width: 10%;
+              text-align: left;
+          }
+      
+          .name {
+              width: 80%;
+              text-align: left;
+          }
+      
+          .weight {
+              width: 10%;
+              text-align: left;
+          }
+      </style>
+      
+      
+      <table>
+          <!-- The ngFor should be on the tr (table row) element, not the table element. Same goes for the "todo" and "done" classes -->
+          <tr *ngFor="let todo of todos; let i = index;" class="todo" [class.done]="todo.completed">
+              <td class="position">{{i+1}}</td>
+      
+              <!-- Use todo instead of todos[i] -->
+              <td class="name" (dblclick)="toggleDone(i)">{{todo.content}}</td>
+      
+              <td class="weight">
+                  <button class="delete" mat-raised-button color="warn" (click)="deleteTodo(i)">Sil</button>
+              </td>
+          </tr>
+      </table>  
+    
+
+</div>
